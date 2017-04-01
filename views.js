@@ -15,6 +15,12 @@ const views = (function views() {
       searchPersonCargo: {
         tell: "Feliz is you father"
       },
+      placeIntent: {
+        ask: "Where do you want to go?"
+      },
+       placeDescription: {
+        tell: "the {place} is in {location}"
+      },
     },
   };
 }());
