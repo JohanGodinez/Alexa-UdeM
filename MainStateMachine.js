@@ -1,6 +1,7 @@
 'use strict';
 
 const Voxa = require('voxa');
+const _ = require('voxa');
 const views = require('./views');
 const variables = require('./variables');
 const states = require('./states');

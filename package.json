@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/JohanGodinez/Alexa-UdeM#readme",
   "dependencies": {
+    "lodash": "^4.17.4",
     "voxa": "^2.1.0"
   }
 }
