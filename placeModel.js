@@ -18,6 +18,11 @@ class Model {
         const placeFound = _.find(places, { name: this.placeLocation })
         this.placeFound = placeFound;
     }
+    findSteps(){
+        const ProccesStepsA = _.find(ProccesSteps, {name : this.locationProccess})
+        this.ProccesStepsA = ProccesStepsA;
+    }
+
     static get PLACES(){
         return places;
     }
@@ -63,5 +68,19 @@ const places = [
         name: 'Rector office',
         location: 'Inside of registration office'
     },
-
 ];
+
+const ProccesSteps = [
+  {
+    name : 'Matricula',
+    descripcion : 'Ok Okey Process Matricula'
+  },
+  {
+    name : 'Pagos',
+    descripcion : 'Okey Okey Process for money'
+  },
+  {
+    name : 'Carta Alumno Activo',
+    descripcion : 'Okey Process for Student Active'
+  }
+]

@@ -13,37 +13,36 @@ exports.register = function register(skill) {
             return {reply:'Intent.optionIntent', to :'placeDescription'}
         }
         else if (event.intent.params.option === 'steps') {
-            return {reply:'Intent.optionIntent', to :'personsDescription'}
+            return {reply:'Intent.optionIntent', to :'stepsOption'}
         }
       }
     });
 
-  //   skill.onState('personsDescription', function(event) {
-  //     if (event.intent.name === 'Person') {
-  //       if (event.intent.params.name === 'Felix') {
-  //           return {reply:'Intent.personsDescription'}
-  //       }
-  //     }
-  //     else if (event.intent.name === 'AMAZON.NoIntent') {
-  //         return {reply:'Intent.personsDescription', to : 'searchPersonCargo'}
-  //     }
-  //   });
-  //
-  //   skill.onState('searchPersonCargo', function(event) {
-  //     if (event.intent.name === 'Cargo') {
-  //
-  //     }
-  //     else if (event.intent.name === 'AMAZON.NoIntent') {
-  //         return {reply:'Intent.personsDescription', to : 'PersonHelp'}
-  //     }
-  //   });
-  // skill.onIntent('LaunchIntent', () => ({ reply: 'Intent.Hello', to: 'personsIntent' }));
-  //
-  // skill.onState('personsIntent', function (event) {
-  //   if (event.intent.name === 'Principal') {
-  //     return { reply: 'Intent.personsIntent', to: 'personsDescription' }
-  //   }
-  // });
+    skill.onState('personsDescription', function(event) {
+      if (event.intent.name === 'Person') {
+        if (event.intent.params.name === 'Felix') {
+            return {reply:'Intent.personsDescription'}
+        }
+      }
+      else if (event.intent.name === 'AMAZON.NoIntent') {
+          return {reply:'Intent.personsDescription', to : 'searchPersonCargo'}
+      }
+    });
+  
+    skill.onState('searchPersonCargo', function(event) {
+      if (event.intent.name === 'Cargo') {
+  
+      }
+      else if (event.intent.name === 'AMAZON.NoIntent') {
+          return {reply:'Intent.personsDescription', to : 'PersonHelp'}
+      }
+    }); 
+  
+  skill.onState('personsIntent', function (event) {
+    if (event.intent.name === 'Principal') {
+      return { reply: 'Intent.personsIntent', to: 'personsDescription' }
+    }
+  });
 
 
   skill.onState('placeDescription', function (event) {
@@ -52,6 +51,14 @@ exports.register = function register(skill) {
       event.model.find();
       return { reply: 'Intent.placeDescription' }
     }
+  });
+
+  skill.onState('StepsOption', function(event){
+        if (event.intent.name === 'StepsOption') {
+           event.model.locationProccess = event.intent.params.OptionValue;
+           event.model.findSteps();
+           return {reply : 'Intent.stepsDescription'}
+        }  
   });
 
 }

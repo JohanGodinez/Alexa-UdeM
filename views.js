@@ -23,7 +23,14 @@ const views = (function views() {
       },
        placeDescription: {
         tell: "the {place} is in {location}"
-      },
+      }, 
+      stepsOption : {
+        ask : 'Welcome, I can help you Enrollment , Payments, Active student letter ?'
+      }
+      stepsDescription : {
+        tell : "Ok {Description}"
+      }
+
     },
   };
 }());
