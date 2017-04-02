@@ -108,7 +108,7 @@ const ProccesSteps = [
   },
   {
     name : 'payments',
-    descripcion : 'Number Enrollment'
+    descripcion : 'Number Enrollment and $20'
   },
   {
     name : 'active student letter',
