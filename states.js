@@ -6,14 +6,16 @@ exports.register = function register(skill) {
 
     skill.onState('optionIntent', function(event) {
       if (event.intent.name === 'Principal') {
-        if (event.intent.params.option === 'places') {
-            return {reply:'Intent.optionIntent', to :'placeDescription'}
+        if (event.intent.params.option === 'Person') {
+            return {reply:'Intent.optionIntent', to :'personIntent'}
         }
         else if (event.intent.params.option === 'places') {
-            return {reply:'Intent.optionIntent', to :'placeDescription'}
+            return {reply:'Intent.optionIntent', to :'placeIntent'}
         }
         else if (event.intent.params.option === 'steps') {
-            return {reply:'Intent.optionIntent', to :'personsDescription'}
+
+            return {reply:'Intent.optionIntent', to :'stepsIntent'}
+
         }
       }
     });
@@ -28,25 +30,14 @@ exports.register = function register(skill) {
           return {reply:'Intent.personsDescription', to : 'searchPersonCargo'}
       }
     });
-    
+
     skill.onState('searchPersonCargo', function(event) {
       if (event.intent.name === 'Cargo') {
-
       }
       else if (event.intent.name === 'AMAZON.NoIntent') {
           return {reply:'Intent.personsDescription', to : 'PersonHelp'}
       }
     });
-
-    skill.onState('searchPersonCargo', function(event) {
-      if (event.intent.name === 'Cargo') {
-
-      }
-      else if (event.intent.name === 'AMAZON.NoIntent') {
-          return {reply:'Intent.personsDescription', to : 'PersonHelp'}
-      }
-    });
-  skill.onIntent('LaunchIntent', () => ({ reply: 'Intent.Hello', to: 'personsIntent' }));
 
   skill.onState('personsIntent', function (event) {
     if (event.intent.name === 'Principal') {
@@ -54,6 +45,7 @@ exports.register = function register(skill) {
     }
   });
 
+  skill.onIntent('placeIntent',() =>({reply:'Intent.placeIntent', to:'placeDescription'}));
 
   skill.onState('placeDescription', function (event) {
     if (event.intent.name === 'Place') {
@@ -61,6 +53,14 @@ exports.register = function register(skill) {
       event.model.find();
       return { reply: 'Intent.placeDescription' }
     }
+  });
+
+  skill.onState('StepsOption', function(event){
+        if (event.intent.name === 'StepsOption') {
+           event.model.locationProccess = event.intent.params.OptionValue;
+           event.model.findSteps();
+           return {reply : 'Intent.stepsDescription'}
+        }
   });
 
 }

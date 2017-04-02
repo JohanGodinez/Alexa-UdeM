@@ -7,5 +7,8 @@ module.exports = {
   },
   location: function location(model){
     return model.placeFound.location;
+  },
+  Description : function Description(model){
+  		return model.ProccesStepsA.descripcion;
   }
 }
