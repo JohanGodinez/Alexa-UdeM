@@ -17,13 +17,13 @@ class Model {
       let response;
       switch (this.optionChoose) {
         case 'persons':
-              this.response = 'If you know the name of the person could you give it to me?';
+              this.response = 'could you give me the person name?';
           break;
         case 'places':
-              this.response = 'Where do you want to go?';
+              this.response = 'what place do you want to go?';
           break;
         case 'steps':
-              this.response = 'Welcome, I can help you Enrollment , Payments, Active student letter ?';
+              this.response = 'what steps do you nedd to know?';
           break;
       this.response = response;
       }
@@ -52,13 +52,13 @@ module.exports = Model;
 const persons = [
   {
     name : "Felix Ramirez",
-    position: "Programer",
-    description : "A professor at the UDEM, and programmer on the development of systems by the university."
+    position: "developer",
+    description : "a teacher and software developer at U D M"
   },
   {
     name : "Fernando Valle",
-    position: "Programer",
-    description : "Deputy director of the university of managua"
+    position: "vice principal",
+    description : "vice principal of university of managua"
   }
 ]
 
@@ -104,14 +104,14 @@ const places = [
 const ProccesSteps = [
   {
     name : 'enrollment',
-    descripcion : 'Make sure to bring two photos carnet size, Hight school certify, Birthday certify and $20'
+    description : 'Make sure to bring two photos carnet size, Hight school certify, Birthday certify and $20'
   },
   {
     name : 'payments',
-    descripcion : 'Number Enrollment'
+    description : 'Student id, and the amount to pay'
   },
   {
     name : 'active student letter',
-    descripcion : ['']
+    description : 'Go to the university registration office and meet the manager Felix Ramirez'
   }
 ]

@@ -8,8 +8,8 @@ module.exports = {
   location: function location(model){
     return model.placeFound.location;
   },
-  Description : function Description(model){
-  		return model.steps.descripcion;
+  description : function description(model){
+  		return model.steps.description;
   },
   optionChoose: function optionChoose(model){
     return model.response;

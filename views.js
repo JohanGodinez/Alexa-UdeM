@@ -4,19 +4,19 @@ const views = (function views() {
   return {
     Intent: {
       Hello: {
-        ask: 'Welcome to the UdeM. I can help you with the managements, information of the personnel and locations. What do you need?',
+        ask: 'Welcome to the U D M assistant. I can help you if you do not know places, persons or steps for some process. What do you need to know about?',
       },
       optionIntent:{
         ask: "{optionChoose}"
       },
       personDescription: {
-        ask: "Feliz is you father"
+        ask: "{name} is {description}"
       },
       placeDescription: {
         tell: "the {place} is in {location}"
       },
       stepsDescription : {
-        tell : "Ok {Description}"
+        tell : "the steps are {description}"
       }
     },
   };
