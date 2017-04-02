@@ -23,26 +23,48 @@ exports.register = function register(skill) {
 
     skill.onState('personDescription', function(event) {
       if (event.intent.name === 'Person') {
-          event.model.personName =  event.intent.params.placename;
+          event.model.personName =  event.intent.params.personname;
           event.model.findPerson();
-          return {reply:'Intent.personDescription'}
+          return {reply : 'Intent.personDescription', to: 'returnIntent'}
+      }
+      if (event.intent.name === 'AMAZON.NoIntent') {
+        return {reply : 'Intent.Hello', to: 'entry' }
       }
     });
-    
+
   skill.onState('placeDescription', function (event) {
     if (event.intent.name === 'Place') {
       event.model.placeLocation =  event.intent.params.placename;
       event.model.find();
-      return { reply: 'Intent.placeDescription' }
+      return {reply : 'Intent.placeDescription', to: 'returnIntent'}
+    }
+    if (event.intent.name === 'AMAZON.NoIntent') {
+      return {reply : 'Intent.Hello', to: 'entry' }
     }
   });
 
   skill.onState('stepsDescription', function(event){
-        if (event.intent.name === 'Step') {
-           event.model.locationProccess = event.intent.params.stepname;
-           event.model.findSteps();
-           return {reply : 'Intent.stepsDescription'}
-        }
+      if (event.intent.name === 'Step') {
+         event.model.locationProccess = event.intent.params.stepname;
+         event.model.findSteps();
+         return {reply : 'Intent.stepsDescription', to: 'returnIntent'}
+      }
+      if (event.intent.name === 'AMAZON.NoIntent') {
+        return {reply : 'Intent.Hello', to: 'entry' }
+      }
+  });
+
+  skill.onState('returnIntent', function(event){
+    if (event.intent.name === 'AMAZON.YesIntent') {
+      return {reply : 'Intent.Hello', to: 'entry'}
+    }
+    if (event.intent.name === 'AMAZON.NoIntent') {
+      return {reply : 'Intent.endIntent' }
+    }
+  });
+
+  skill.onState('endIntent', function(event){
+       return {reply : 'Intent.endIntent'}
   });
 
 }

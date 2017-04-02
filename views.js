@@ -10,13 +10,19 @@ const views = (function views() {
         ask: "{optionChoose}"
       },
       personDescription: {
-        ask: "{name} is {description}"
+        ask : "{personName} is {personDescription}. Do you need anything else?"
       },
       placeDescription: {
-        tell: "the {place} is in {location}"
+        ask : "the {place} is in {location}. Do you need anything else?"
       },
       stepsDescription : {
-        tell : "the steps are {description}"
+        ask : "the steps are {description}. Do you need anything else?"
+      },
+      returnIntent : {
+        ask : ""
+      },
+      endIntent : {
+        tell : "Bye"
       }
     },
   };

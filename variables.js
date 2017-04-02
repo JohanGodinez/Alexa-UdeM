@@ -11,6 +11,12 @@ module.exports = {
   description : function description(model){
   		return model.steps.description;
   },
+  personName : function personName(model){
+  		return model.personFound.name;
+  },
+  personDescription : function personDescription(model){
+  		return model.personFound.description;
+  },
   optionChoose: function optionChoose(model){
     return model.response;
   }
