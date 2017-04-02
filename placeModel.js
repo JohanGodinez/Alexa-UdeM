@@ -1,12 +1,14 @@
 'use strict';
+
 const _ = require('lodash');
 
-class placeModel {
+class Model {
     constructor(data) {
         _.assign(this, data);
     }
 
     static fromEvent(alexaEvent) {
+        console.log("asdf");
         return new this(alexaEvent.session.attributes.modelData);
     }
     serialize() {
@@ -21,28 +23,25 @@ class placeModel {
     }
 }
 
-module.exports = placeModel;
+module.exports = Model;
+
 
 const places = [
     {
-        name: 'Laboratory one',
+        name: 'laboratory 1',
         location: 'first floor, engineering building'
     },
     {
-        name: 'Laboratory ten',
+        name: 'laboratory 10',
         location: 'second floor, engineering building'
     },
     {
-        name: 'Laboratory thirteen',
+        name: 'laboratory 13',
         location: 'Behind registration office'
     },
     {
         name: 'Registration office',
         location: 'In front of the gym'
-    },
-    {
-        name: 'Laboratory thirteen',
-        location: 'Behind registration office'
     },
     {
         name: 'Classroom one',
