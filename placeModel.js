@@ -112,6 +112,6 @@ const ProccesSteps = [
   },
   {
     name : 'active student letter',
-    description : 'Go to the university registration office and meet the manager Felix Ramirez'
-  }
+    description : 'Go to the university registration office and meet with the manager Felix Ramirez'
+  },  
 ]
