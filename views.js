@@ -9,7 +9,7 @@ const views = (function views() {
       optionIntent:{
         ask: "places"
       },
-      personsIntent: {
+      personIntent: {
         ask: "If you know the name of the person could you give it to me?"
       },
       searchPersonName: {
