@@ -6,14 +6,16 @@ exports.register = function register(skill) {
 
     skill.onState('optionIntent', function(event) {
       if (event.intent.name === 'Principal') {
-        if (event.intent.params.option === 'places') {
-            return {reply:'Intent.optionIntent', to :'placeDescription'}
+        if (event.intent.params.option === 'Person') {
+            return {reply:'Intent.optionIntent', to :'personIntent'}
         }
         else if (event.intent.params.option === 'places') {
-            return {reply:'Intent.optionIntent', to :'placeDescription'}
+            return {reply:'Intent.optionIntent', to :'placeIntent'}
         }
         else if (event.intent.params.option === 'steps') {
-            return {reply:'Intent.optionIntent', to :'stepsOption'}
+  
+            return {reply:'Intent.optionIntent', to :'stepsIntent'}
+ 
         }
       }
     });
@@ -44,6 +46,7 @@ exports.register = function register(skill) {
     }
   });
 
+  skill.onIntent('placeIntent',() =>({reply:'Intent.placeIntent', to:'placeDescription'}));
 
   skill.onState('placeDescription', function (event) {
     if (event.intent.name === 'Place') {

@@ -9,7 +9,7 @@ const views = (function views() {
       optionIntent:{
         ask: "places"
       },
-      personsIntent: {
+      personIntent: {
         ask: "If you know the name of the person could you give it to me?"
       },
       searchPersonName: {
@@ -24,7 +24,7 @@ const views = (function views() {
        placeDescription: {
         tell: "the {place} is in {location}"
       }, 
-      stepsOption : {
+      stepsIntent : {
         ask : 'Welcome, I can help you Enrollment , Payments, Active student letter ?'
       }
       stepsDescription : {
