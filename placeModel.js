@@ -8,32 +8,40 @@ class Model {
     }
 
     static fromEvent(alexaEvent) {
-        console.log("asdf");
         return new this(alexaEvent.session.attributes.modelData);
     }
     serialize() {
         return this;
     }
+    general(){
+      let response;
+      switch (this.optionChoose) {
+        case 'persons':
+              this.response = 'If you know the name of the person could you give it to me?';
+          break;
+        case 'places':
+              this.response = 'Where do you want to go?';
+          break;
+        case 'steps':
+              this.response = 'Welcome, I can help you Enrollment , Payments, Active student letter ?';
+          break;
+      this.response = response;
+      }
+    }
+
     find() {
         const placeFound = _.find(places, { name: this.placeLocation })
         this.placeFound = placeFound;
     }
-<<<<<<< HEAD
-    findPersonName() {
+    findPerson() {
         const personFound = _.find(persons, { name: this.personName })
         this.personFound = personFound;
     }
-    findPersonPosition() {
-        const personFoundPosition = _.find(persons, { name: this.personPosition })
-        this.personFoundPosition = personFoundPosition;
-    }
-=======
     findSteps(){
-        const ProccesStepsA = _.find(ProccesSteps, {name : this.locationProccess})
-        this.ProccesStepsA = ProccesStepsA;
+        const steps = _.find(ProccesSteps, {name : this.locationProccess})
+        this.steps = steps;
     }
 
->>>>>>> 84d67c572a2e7e091a15823792bf66f8e47f7eb1
     static get PLACES(){
         return places;
     }
@@ -95,15 +103,15 @@ const places = [
 
 const ProccesSteps = [
   {
-    name : 'Matricula',
-    descripcion : 'Ok Okey Process Matricula'
+    name : 'enrollment',
+    descripcion : 'Make sure to bring two photos carnet size, Hight school certify, Birthday certify and $20'
   },
   {
-    name : 'Pagos',
-    descripcion : 'Okey Okey Process for money'
+    name : 'payments',
+    descripcion : 'Number Enrollment'
   },
   {
-    name : 'Carta Alumno Activo',
-    descripcion : 'Okey Process for Student Active'
+    name : 'active student letter',
+    descripcion : ['']
   }
 ]

@@ -6,47 +6,29 @@ exports.register = function register(skill) {
 
     skill.onState('optionIntent', function(event) {
       if (event.intent.name === 'Principal') {
-        if (event.intent.params.option === 'Person') {
-            return {reply:'Intent.optionIntent', to :'personIntent'}
+        event.model.optionChoose = event.intent.params.option;
+        event.model.general();
+        if (event.intent.params.option === 'persons') {
+            return {reply:'Intent.optionIntent', to :'personDescription'}
         }
-        else if (event.intent.params.option === 'places') {
-            return {reply:'Intent.optionIntent', to :'placeIntent'}
+        if (event.intent.params.option === 'places') {
+            return {reply:'Intent.optionIntent', to :'placeDescription'}
         }
-        else if (event.intent.params.option === 'steps') {
-
-            return {reply:'Intent.optionIntent', to :'stepsIntent'}
-
+        if (event.intent.params.option === 'steps') {
+            return {reply:'Intent.optionIntent', to :'stepsDescription'}
         }
+        return {reply:'Intent.optionIntent', to :'Hello'}
       }
     });
 
-    skill.onState('personsDescription', function(event) {
+    skill.onState('personDescription', function(event) {
       if (event.intent.name === 'Person') {
           event.model.personName =  event.intent.params.placename;
           event.model.findPerson();
-          return {reply:'Intent.personsDescription'}
-      }
-      else if (event.intent.name === 'AMAZON.NoIntent') {
-          return {reply:'Intent.personsDescription', to : 'searchPersonCargo'}
+          return {reply:'Intent.personDescription'}
       }
     });
-
-    skill.onState('searchPersonCargo', function(event) {
-      if (event.intent.name === 'Cargo') {
-      }
-      else if (event.intent.name === 'AMAZON.NoIntent') {
-          return {reply:'Intent.personsDescription', to : 'PersonHelp'}
-      }
-    });
-
-  skill.onState('personsIntent', function (event) {
-    if (event.intent.name === 'Principal') {
-      return { reply: 'Intent.personsIntent', to: 'personsDescription' }
-    }
-  });
-
-  skill.onIntent('placeIntent',() =>({reply:'Intent.placeIntent', to:'placeDescription'}));
-
+    
   skill.onState('placeDescription', function (event) {
     if (event.intent.name === 'Place') {
       event.model.placeLocation =  event.intent.params.placename;
@@ -55,9 +37,9 @@ exports.register = function register(skill) {
     }
   });
 
-  skill.onState('StepsOption', function(event){
-        if (event.intent.name === 'StepsOption') {
-           event.model.locationProccess = event.intent.params.OptionValue;
+  skill.onState('stepsDescription', function(event){
+        if (event.intent.name === 'Step') {
+           event.model.locationProccess = event.intent.params.stepname;
            event.model.findSteps();
            return {reply : 'Intent.stepsDescription'}
         }

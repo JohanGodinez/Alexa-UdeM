@@ -9,6 +9,9 @@ module.exports = {
     return model.placeFound.location;
   },
   Description : function Description(model){
-  		return model.ProccesStepsA.descripcion;
+  		return model.steps.descripcion;
+  },
+  optionChoose: function optionChoose(model){
+    return model.response;
   }
 }
