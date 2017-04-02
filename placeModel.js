@@ -18,6 +18,14 @@ class Model {
         const placeFound = _.find(places, { name: this.placeLocation })
         this.placeFound = placeFound;
     }
+    findPersonName() {
+        const personFound = _.find(persons, { name: this.personName })
+        this.personFound = personFound;
+    }
+    findPersonPosition() {
+        const personFoundPosition = _.find(persons, { name: this.personPosition })
+        this.personFoundPosition = personFoundPosition;
+    }
     static get PLACES(){
         return places;
     }
@@ -25,6 +33,18 @@ class Model {
 
 module.exports = Model;
 
+const persons = [
+  {
+    name : "Felix Ramirez",
+    position: "Programer",
+    description : "A professor at the UDEM, and programmer on the development of systems by the university."
+  },
+  {
+    name : "Fernando Valle",
+    position: "Programer",
+    description : "Deputy director of the university of managua"
+  }
+]
 
 const places = [
     {
